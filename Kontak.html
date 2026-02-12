@@ -3,87 +3,159 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Form Kontak - Tuying</title>
+  <title>Kontak Tuying - Dark Glassmorphism</title>
   <style>
-    body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      background: linear-gradient(to bottom, #222, #d9e); 
-      padding: 40px 20px; 
-      margin: 0; 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); /* Dark cosmic gradient */
+      color: #e0e0e0;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
-    .container { 
-      max-width: 500px; 
-      margin: auto; 
-      background: #333; 
-      padding: 40px; 
-      border-radius: 15px; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+
+    /* Subtle animated particles / soft light rays untuk background hidup */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(100, 200, 255, 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(200, 100, 255, 0.06) 0%, transparent 50%);
+      animation: subtlePulse 15s infinite alternate ease-in-out;
+      pointer-events: none;
+      z-index: -2;
     }
-    h2 { text-align: center; color: #fff; margin-bottom: 30px; }
-    label { display: block; margin: 15px 0 8px; font-weight: 600; color: gold; }
-    input, textarea { 
-      width: 100%; 
-      padding: 12px; 
-      margin-bottom: 20px; 
-      border: 1px solid #2fff; 
-      border-radius: 8px; 
-      font-size: 16px; 
-      box-sizing: border-box; 
+
+    @keyframes subtlePulse {
+      0% { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 0.9; transform: scale(1.05); }
     }
-    button { 
-      background: #3498db; 
-      color: white; 
-      padding: 14px; 
-      border: none; 
-      width: 100%; 
-      border-radius: 8px; 
-      cursor: pointer; 
-      font-size: 18px; 
-      font-weight: bold; 
-      transition: background 0.3s; 
+
+    .container {
+      position: relative;
+      max-width: 520px;
+      width: 100%;
+      padding: 40px 30px;
+      background: rgba(20, 20, 50, 0.25); /* Semi-transparent dark tint */
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6),
+                  inset 0 0 20px rgba(100, 150, 255, 0.1); /* Inner soft glow */
+      overflow: hidden;
+      transform: perspective(1000px) rotateX(5deg) rotateY(5deg); /* 3D tilt awal */
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 1;
     }
-    button:hover { background: #2980b9; }
-    #status { 
-      text-align: center; 
-      margin-top: 20px; 
-      font-weight: bold; 
-      font-size: 16px; 
+
+    .container:hover {
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-10px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7),
+                  inset 0 0 30px rgba(100, 200, 255, 0.15);
     }
-    .success { color: gold; }
-    .error { color: #e74c3c; }
+
+    h2 {
+      text-align: center;
+      color: #f0f4ff;
+      margin-bottom: 35px;
+      font-size: 2.2rem;
+      text-shadow: 0 0 15px rgba(100, 150, 255, 0.4); /* Soft neon glow */
+    }
+
+    label {
+      display: block;
+      margin: 20px 0 10px;
+      font-weight: 600;
+      color: #c0d0ff;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 25px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: rgba(100, 200, 255, 0.5);
+      box-shadow: 0 0 15px rgba(100, 200, 255, 0.3);
+    }
+
+    button {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 15px;
+      border: none;
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: all 0.4s;
+      box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4);
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(37, 117, 252, 0.6);
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    #status {
+      text-align: center;
+      margin-top: 25px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .success { color: #00ff9d; text-shadow: 0 0 10px #00ff9d; }
+    .error { color: #ff6b6b; text-shadow: 0 0 10px #ff6b6b; }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .container { padding: 30px 20px; }
+      h2 { font-size: 1.8rem; }
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>Kirim Pesan ke gemagus 💬</h2>
+  <h2>Kirim Pesan gemagus😄</h2>
   
   <form id="contact-form">
     <label for="name">Nama Lengkap:</label>
-    <input type="text" id="name" name="name" required placeholder="Masukin nama kamu ya..."/>
+    <input type="text" id="name" name="name" required placeholder=" nama.."/>
     
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required placeholder="contoh@email.com"/>
+    <input type="email" id="email" name="email" required placeholder="@email.com"/>
     
     <label for="message">Pesan Kamu:</label>
     <textarea id="message" name="message" rows="6" required placeholder="Ceritain apa yang mau disampein..."></textarea>
     
-    <button type="submit">Kirim </button>
+    <button type="submit">Kirim Pesan</button>
   </form>
   
   <div id="status"></div>
 </div>
 
-<!-- Email -->
+<!-- EmailJS SDK (tetap sama) -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script type="text/javascript">
-  (function(){
-    // Gemagus !!!
-    emailjs.init({
-      publicKey: "WZx3cqRVdxxCiTlbK",  // ← dari dashboard, : "abc125..."
-    });
-  })();
+  emailjs.init("WZx3cqRVdxxCiTlbK");  // Public Key kamu
 
   document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -92,17 +164,16 @@
     status.textContent = "Lagi di kirim... sabar ya kak 😊";
     status.className = "";
 
-    //  Service ID 
-    const SERVICE_ID   = "service_8d1gins";     // contoh: service_xxxxxx
-    const TEMPLATE_ID  = "template_q5kj27p";    // : template_yyyyyy
+    const SERVICE_ID   = "service_8d1gins";
+    const TEMPLATE_ID  = "template_q5kj27p";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
-      .then(function(response) {
+      .then(function() {
         status.textContent = "Pesan berhasil terkirim! Terima kasih banyak ya 💕";
         status.className = "success";
-        document.getElementById('contact-form').reset(); // reset form
+        document.getElementById('contact-form').reset();
       }, function(error) {
-        status.textContent = "Waduh gagal nih: " + (error.text || "Cek ID-nya ya");
+        status.textContent = "Waduh gagal nih: " + (error.text || "Cek koneksi atau ID-nya ya");
         status.className = "error";
         console.error("EmailJS error:", error);
       });
