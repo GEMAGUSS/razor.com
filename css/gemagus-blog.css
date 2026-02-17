@@ -5,10 +5,29 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 19px;
-    line-height: 2em;
-    overflow-x: hidden;
-    background-color: #000;
+  background: radial-gradient(circle at top, #111 0%, #000 70%);
+  overflow: hidden;
+  color: #333;
+  background: #000;
+   
+}
+.particle {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(255,255,255,0.8);
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
 }
 
 p, span { color: #fff; }
@@ -165,18 +184,7 @@ ul {
     
 }
 /* background kristal */
-.crystal  {
-  position: absolute;
-  top: -20px;
-  width: 8px;
-  height: 18px;
-  background: #2ff;
-  border-radius: 9px;
-  animation: fall linear infinite;
-}
-@keyframes fall {
-  to { transform: translateY(100vh); }
-}
+
 .form-inline .form-control.tm-search-input {
     display: block;
     height: 60px;
